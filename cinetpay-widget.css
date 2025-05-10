@@ -1,0 +1,284 @@
+/* --- CinetPay Ticket Widget Styles --- */
+.login-section {
+  /*  display: none; /* Cache l'élément et retire l'espace qu'il occupait */
+}
+
+.login-section1 {
+    display: none; /* Cache l'élément et retire l'espace qu'il occupait */
+}
+
+
+
+#cinetpay-ticket-widget-container { /* MODIFIED */
+    /* Add any overall container styling if needed, e.g., max-width */
+    font-family: sans-serif; /* Basic font */
+    box-sizing: border-box;
+}
+#cinetpay-ticket-widget-container *, /* MODIFIED */
+#cinetpay-ticket-widget-container *:before, /* MODIFIED */
+#cinetpay-ticket-widget-container *:after { /* MODIFIED */
+    box-sizing: inherit;
+}
+
+
+/* Styles for the rates section */
+#cinetpay-ticket-widget-container .widget-rates-section { /* MODIFIED */
+    background-color: #47ff1900;
+    padding: 15px;
+    margin-top: 15px; /* Adjusted margin */
+    margin-bottom: 15px; /* Adjusted margin */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #DDD;
+}
+
+#cinetpay-ticket-widget-container .widget-rates-section h2 { /* MODIFIED */
+    color: #06005f;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* Container for dynamic options */
+#cinetpay-ticket-widget-container #widget-dynamic-ticket-options { /* MODIFIED */
+    display: none; /* Initially hidden, shown by JS */
+    flex-wrap: wrap;
+    justify-content: center; /* Center items if they don't fill the row */
+    gap: 10px;
+    padding: 10px 0;
+}
+
+/* Individual dynamic ticket option */
+#cinetpay-ticket-widget-container .widget-dynamic-ticket-option { /* MODIFIED */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #e4e4e4;
+    text-align: center;
+    /* Default: 3 per row */
+    width: calc(33.33% - 10px);
+    min-width: 120px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Add margin-bottom here instead of gap only if needed */
+}
+
+#cinetpay-ticket-widget-container .widget-dynamic-ticket-option p { /* MODIFIED */
+    margin: 0 0 10px 0;
+    font-size: 13px;
+}
+#cinetpay-ticket-widget-container .widget-dynamic-ticket-option p font { /* MODIFIED */
+    font-weight: bold; /* Make text bold like original */
+    color: #b60064; /* Keep color */
+}
+
+
+/* Dynamic payment button */
+#cinetpay-ticket-widget-container .widget-dynamic-payment-button { /* MODIFIED */
+    background-color: #000768;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: auto; /* Push to bottom */
+}
+
+#cinetpay-ticket-widget-container .widget-dynamic-payment-button:hover { /* MODIFIED */
+    background-color: #ff0404;
+}
+
+/* Loading message */
+#cinetpay-ticket-widget-container .widget-loading-message { /* MODIFIED */
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #00001a;
+    display: block; /* Shown by default, hidden by JS */
+}
+
+/* Notification Popup Styles */
+#cinetpay-ticket-widget-container .widget-notification { /* MODIFIED */
+    position: fixed; /* Keep fixed positioning */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1001; /* Ensure it's above most content */
+    display: none;
+    color: #333;
+    text-align: center;
+    width: 90%;
+    max-width: 350px;
+    font-size: 14px;
+}
+#cinetpay-ticket-widget-container .widget-notification h2 { /* MODIFIED */
+    color: #3B5998;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+#cinetpay-ticket-widget-container .widget-notification p { /* MODIFIED Style paragraphs within the message div */
+    margin-bottom: 10px;
+    white-space: pre-wrap; /* Keep line breaks */
+}
+#cinetpay-ticket-widget-container .widget-notification .widget-ticket-info { /* MODIFIED Class for ticket details */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 13px;
+}
+#cinetpay-ticket-widget-container .widget-notification .widget-ticket-info p { /* MODIFIED */
+    margin: 5px 0;
+}
+#cinetpay-ticket-widget-container .widget-notification .widget-ticket-info strong { /* MODIFIED */
+    color: #000;
+}
+/* Style buttons added dynamically */
+#cinetpay-ticket-widget-container .widget-notification button { /* MODIFIED */
+    background-color: #02b839;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    margin: 5px;
+}
+#cinetpay-ticket-widget-container .widget-notification button:hover { /* MODIFIED */
+    background-color: #4c69ba;
+}
+#cinetpay-ticket-widget-container .widget-notification .widget-delete-button { /* MODIFIED Specific style for delete */
+    background-color: #f44336;
+}
+#cinetpay-ticket-widget-container .widget-notification .widget-delete-button:hover { /* MODIFIED */
+    background-color: #d32f2f;
+}
+#cinetpay-ticket-widget-container .widget-close-icon { /* MODIFIED */
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+#cinetpay-ticket-widget-container .widget-close-icon:hover { /* MODIFIED */
+    color: #666;
+}
+#cinetpay-ticket-widget-container .widget-notification.error { /* MODIFIED */
+    background-color: #ffdddd;
+    border: 1px solid #ffaaaa;
+    color: #cc0000;
+}
+#cinetpay-ticket-widget-container .widget-notification.error h2 { /* MODIFIED */
+    color: #cc0000;
+}
+
+/* "Payer/Voir Ticket" button style */
+#cinetpay-ticket-widget-container #widget-payTicketButton { /* MODIFIED */
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #ffd900;
+    color: rgb(2, 0, 0);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+#cinetpay-ticket-widget-container #widget-payTicketButton:hover { /* MODIFIED */
+    background-color: #4c69ba;
+}
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    #cinetpay-ticket-widget-container .widget-dynamic-ticket-option { /* MODIFIED */
+        /* 2 items per row for tablets and smaller */
+        width: calc(50% - 10px);
+        min-width: 100px; /* Adjust min-width if needed for 2 columns */
+    }
+    #cinetpay-ticket-widget-container .widget-notification { /* MODIFIED */
+        width: 95%; padding: 15px; font-size: 13px;
+    }
+    #cinetpay-ticket-widget-container .widget-notification h2 { font-size: 1.1em; } /* MODIFIED */
+    #cinetpay-ticket-widget-container .widget-notification button { padding: 6px 12px; font-size: 13px; } /* MODIFIED */
+    #cinetpay-ticket-widget-container #widget-payTicketButton { padding: 8px; font-size: 13px; } /* MODIFIED */
+}
+
+@media screen and (max-width: 480px) {
+    /* Styles specifically for small phones (under 480px) */
+
+    /* The .widget-dynamic-ticket-option now inherits the 2-column layout (width: calc(50% - 10px))
+       from the max-width: 768px media query above. No need to redefine the width here. */
+
+     /* We can keep other adjustments specific to very small screens */
+     #cinetpay-ticket-widget-container .widget-notification { padding: 10px; font-size: 12px; } /* MODIFIED */
+     #cinetpay-ticket-widget-container .widget-notification h2 { font-size: 1em; } /* MODIFIED */
+     #cinetpay-ticket-widget-container .widget-notification button { padding: 5px 10px; font-size: 12px; } /* MODIFIED */
+     #cinetpay-ticket-widget-container #widget-payTicketButton { padding: 6px; font-size: 12px; } /* MODIFIED */
+}
+
+/* --- Styles pour le lien de paiement direct (ajouté par JS) --- */
+#cinetpay-ticket-widget-container .widget-direct-link-block { /* MODIFIED */
+    padding: 10px; /* Added padding for better spacing */
+    margin-bottom: 15px; /* Space below the block */
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Un fond léger pour le distinguer */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+#cinetpay-ticket-widget-container .widget-link-instruction { /* MODIFIED */
+    font-size: 13px;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#cinetpay-ticket-widget-container .widget-link-area { /* MODIFIED */
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0; /* Un fond plus marqué pour le lien */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Rounded corners for the input area */
+    padding: 5px; /* Padding inside the link area */
+}
+
+#cinetpay-ticket-widget-container .widget-direct-link { /* MODIFIED */
+    flex-grow: 1; /* Permet au lien de prendre tout l'espace disponible */
+    padding: 8px; /* Padding inside the input itself */
+    border: none; /* Remove border from input as parent .widget-link-area has it */
+    background-color: transparent; /* Make input background transparent */
+    color: #000768; /* Couleur du lien */
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    font-size: 13px;
+    cursor: text; /* Indique qu'on peut sélectionner le texte */
+    outline: none; /* Remove focus outline */
+    /* word-break: break-all; - This was in the parent, but might be needed explicitly on the input */
+}
+
+/* --- Fin Styles pour le lien de paiement direct --- */

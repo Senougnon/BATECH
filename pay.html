@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget FedaPay</title>
+
+<script src="https://cdn.cinetpay.com/seamless/main.js"></script>
+
+    <!-- 2. Lier le fichier CSS du Widget -->
+    <!--    (Remplacez 'path/to/' par le chemin réel vers votre fichier CSS) -->
+    <link rel="stylesheet" href="/cinetpay-widget.css">
+
+    <!-- Styles optionnels pour la page hôte (pour démonstration) -->
+    
+</head>
+<body>
+    <section class="login-section1">
+        <h2>Connexion</h2>
+        <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+            <input type="text" name="username" placeholder="Nom d'utilisateur" value="$(username)" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <p class="info $(if error)alert$(endif)">
+            $(if error == "")Veuillez vous connecter pour utiliser le service hotspot Internet $(if trial == 'yes')<br />Essai gratuit disponible, <a href="$(link-login-only)?dst=$(link-orig-esc)&username=T-$(mac-esc)">cliquez ici</a>.$(endif)
+            $(endif)
+            $(if error)$(error)$(endif)
+        </p>
+    </section>
+    <div class="content">
+
+
+        <!-- START: CinetPay Ticket Widget --> <!-- Commentaire mis à jour -->
+        <div id="cinetpay-ticket-widget-container"> <!-- ID du conteneur mis à jour pour la clarté -->
+            <!-- Payer/Voir Ticket Button - Conservation -->
+            <!-- Ajoutez ceci quelque part dans #cinetpay-ticket-widget-container --> <!-- Commentaire mis à jour -->
+            <div id="widget-tooltip" class="widget-tooltip-class" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(0,0,0,0.8); color: white; padding: 8px 15px; border-radius: 5px; z-index: 1000; font-size: 0.9em; transition: opacity 0.3s ease; opacity: 0;">
+                <!-- Message will appear here -->
+            </div>
+            <!-- Rates Section - Conservation -->
+            <section class="widget-rates-section">
+                <h2>Acheter un ticket par mobile money</h2> <!-- Texte générique, conservation -->
+                <!-- Message shown while loading or if no tickets - Conservation -->
+                <div class="widget-loading-message">Chargement des tickets...</div>
+                <!-- Container for dynamically generated ticket options - Conservation -->
+                <div id="widget-dynamic-ticket-options">
+                    <!-- Ticket options will be loaded here by JS - Conservation -->
+                </div>
+            </section>
+            <button id="widget-payTicketButton">Payer un ticket</button> <!-- Conservation -->
+
+            <!-- Notification Popup - Conservation -->
+            <div class="widget-notification" id="widget-notification">
+                <span class="widget-close-icon" onclick="hideWidgetNotification()">×</span>
+                <h2 id="widget-notification-title"></h2> <!-- Conservation -->
+                <div id="widget-notification-message"></div> <!-- Changed from <p> to <div> for more flexibility - Conservation -->
+                <!-- Buttons added dynamically by JS - Conservation -->
+            </div>
+        </div>
+
+
+    </div> <!-- Fin de .content -->
+
+
+    <!-- 4. Inclure le fichier JavaScript du Widget -->
+    <!--    (Remplacez 'path/to/' par le chemin réel vers votre fichier JS) -->
+    <!--    IMPORTANT : Doit être de type "module" car il utilise import() -->
+    <script type="module" src="/cinetpay-widget.js"></script>
+
+    <!--    NOTE IMPORTANTE : Assurez-vous que votre fichier 'firebase-config-manager.js' -->
+    <!--    est également accessible par le serveur web et que le chemin -->
+    <!--    'const firebaseConfigManagerPath = ...' DANS 'fedapay-widget.js' -->
+    <!--    pointe correctement vers celui-ci (relativement à l'emplacement de fedapay-widget.js). -->
+
+</body>
+</html>

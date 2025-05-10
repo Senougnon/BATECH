@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget CinetPay</title> <!-- Titre mis à jour -->
+
+    <!-- 1. Inclure le SDK CinetPay -->
+    <!--    (Nécessaire pour que le widget puisse initialiser CinetPay) -->
+    <script src="https://cdn.cinetpay.com/seamless/main.js"></script> <!-- SDK CinetPay -->
+
+    <!-- 2. Lier le fichier CSS du Widget CinetPay -->
+    <!--    (Remplacez '/cinetpay-widget.css' par le chemin réel vers votre fichier CSS si différent) -->
+    <link rel="stylesheet" href="/cinetpay-widget.css"> <!-- Chemin CSS mis à jour -->
+
+    <!-- Styles optionnels pour la page hôte (pour démonstration) - Conservation -->
+
+</head>
+<body>
+
+    <div class="content">
+
+
+        <hr>
+
+        <!-- START: CinetPay Ticket Widget --> <!-- Commentaire mis à jour -->
+        <div id="cinetpay-ticket-widget-container"> <!-- ID du conteneur mis à jour pour la clarté -->
+            <!-- Payer/Voir Ticket Button - Conservation -->
+            <!-- Ajoutez ceci quelque part dans #cinetpay-ticket-widget-container --> <!-- Commentaire mis à jour -->
+            <div id="widget-tooltip" class="widget-tooltip-class" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: rgba(0,0,0,0.8); color: white; padding: 8px 15px; border-radius: 5px; z-index: 1000; font-size: 0.9em; transition: opacity 0.3s ease; opacity: 0;">
+                <!-- Message will appear here -->
+            </div>
+            <!-- Rates Section - Conservation -->
+            <section class="widget-rates-section">
+                <h2>Acheter un ticket par mobile money</h2> <!-- Texte générique, conservation -->
+                <!-- Message shown while loading or if no tickets - Conservation -->
+                <div class="widget-loading-message">Chargement des tickets...</div>
+                <!-- Container for dynamically generated ticket options - Conservation -->
+                <div id="widget-dynamic-ticket-options">
+                    <!-- Ticket options will be loaded here by JS - Conservation -->
+                </div>
+            </section>
+            <button id="widget-payTicketButton">Payer un ticket</button> <!-- Conservation -->
+
+            <!-- Notification Popup - Conservation -->
+            <div class="widget-notification" id="widget-notification">
+                <span class="widget-close-icon" onclick="hideWidgetNotification()">×</span>
+                <h2 id="widget-notification-title"></h2> <!-- Conservation -->
+                <div id="widget-notification-message"></div> <!-- Changed from <p> to <div> for more flexibility - Conservation -->
+                <!-- Buttons added dynamically by JS - Conservation -->
+            </div>
+        </div>
+        <!-- END: CinetPay Ticket Widget --> <!-- Commentaire mis à jour -->
+
+        <hr>
+
+
+    </div> <!-- Fin de .content - Conservation -->
+
+
+    <!-- 4. Inclure le fichier JavaScript du Widget CinetPay -->
+    <!--    IMPORTANT : Doit être de type "module" car il utilise import() -->
+    <!--    (Remplacez '/cinetpay-widget.js' par le chemin réel vers votre fichier JS si différent) -->
+    <script type="module" src="/cinetpay-widget.js"></script> <!-- Chemin JS mis à jour -->
+
+</body>
+</html>
